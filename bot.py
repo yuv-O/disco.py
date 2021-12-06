@@ -196,4 +196,4 @@ async def on_command_error(ctx, error):
 
     
 
-bot.run('OTE0NTMwMDQzNDYyNTcwMDg0.YaOYeQ.yg9LDsR0cJ66gElfhVXzPDX1LFg')
+bot.run('OTE0NTMwMDQzNDYyNTcwMDg0.YaOYeQ.hTivCnVeJIDLMSOOFjjh4b39x7w')

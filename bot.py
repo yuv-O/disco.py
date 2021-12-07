@@ -23,7 +23,7 @@ bot = commands.Bot(command_prefix= get_prefix)
 @bot.event 
 async def on_ready():
     print('bot is ready.')
-   
+bot.remove_command('help')      
 
 @bot.event 
 async def on_guild_join(guild): 

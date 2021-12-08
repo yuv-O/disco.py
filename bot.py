@@ -61,10 +61,10 @@ async def changeprefix(ctx,prefix):
 async def help(ctx, command=None):
 	if command is None:
 		embed = discord.Embed(timestamp=ctx.message.created_at, title='probts Official Bot', description='You can do `prefix help <command>` to get more info about the command.', color=0x2F3136)
-		embed.add_field(name=str'<:D:https://discord.com/assets/cb91d362742dcc886e4a4c3f981f3365.svg> mod commands', value='```ban, kick, modrep, modclose, tempban,clear,changeprifix, report```')
-		embed.add_field(name=str'<:C:https://discord.com/assets/cb91d362742dcc886e4a4c3f981f3365.svg> User Commands', value='```ping, 8ball,```')
+		embed.add_field(name=' mod commands', value='```ban, kick, modrep, modclose, tempban,clear,changeprifix, report```')
+		embed.add_field(name=' User Commands', value='```ping, 8ball,```')
 		embed.set_footer(text='probt discord', icon_url=logo)
-		await ctx.send(embed=embed)             
+		await ctx.send(embed=embed)   
 Status=cycle(['prifix > ,''playing help'])
 @bot.event
 async def on_ready():

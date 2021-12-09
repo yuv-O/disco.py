@@ -24,7 +24,48 @@ bot = commands.Bot(command_prefix= get_prefix)
 async def on_ready():
     print('bot is ready.')
 bot.remove_command('help')      
-
+@bot.command(name="reminder", description="reminds you something after said amount of time.", case_insensitive = True, aliases = ["remind", "remindme", "remind_me"])
+@commands.bot_has_permissions(attach_files = True, embed_links = True)
+async def reminder(ctx, time, *, reminder):
+	await ctx.respond()
+	print(time)
+	print(reminder)
+	user = ctx.message.author
+	embed = discord.Embed(color=0x2F3136)
+	embed.set_footer(text="oh yhey", icon_url=f"{logo}")
+	seconds = 0
+	if reminder is None:
+		embed.add_field(name='Warning', value=' Run the command again but specify what do you want me to remind you about.') # Error message
+	if time.lower().endswith("d"):
+		seconds += int(time[:-1]) * 60 * 60 * 24
+		counter = f"{seconds // 60 // 60 // 24} days"
+	if time.lower().endswith("h"):
+		seconds += int(time[:-1]) * 60 * 60
+		counter = f"{seconds // 60 // 60} hours"
+	elif time.lower().endswith("m"):
+		seconds += int(time[:-1]) * 60
+		counter = f"{seconds // 60} minutes"
+	elif time.lower().endswith("s"):
+		seconds += int(time[:-1])
+		counter = f"{seconds} seconds"
+	if seconds == 0:
+		embed.add_field(name='Warning',
+						value='Please specify a proper duration, do `!help reminder` for more information.')
+	elif seconds < 300:
+		embed.add_field(name='Warning',
+						value='You have specified a too short duration!\nMinimum duration is 5 minutes.')
+	elif seconds > 7776000:
+		embed.add_field(name='Warning', value='You have specified a too long duration!\nMaximum duration is 90 days.')
+	else:
+		beforermd = discord.Embed(title='Reminder Set', description=f'You will be reminded in {counter}', color=0x2F3136)
+		beforermd.set_footer(text='Discord.py For Beginners', icon_url=logo)
+		afterrmd = discord.Embed(title='Reminder', description=f'**Your reminder:** \n {reminder} \n\n *reminder set {counter} ago*', color=0x2F3136)
+		afterrmd.set_footer(text='Discord.py For Beginners', icon_url=logo)
+		await ctx.send(embed=beforermd)
+		await asyncio.sleep(seconds)
+		await ctx.send(embed=afterrmd)
+		return
+	await ctx.send(embed=embed)
 @bot.event 
 async def on_guild_join(guild): 
        with open('prefixes.json','r')as f:

@@ -271,7 +271,7 @@ game = {
 }
 
 
-class Snake_Bot(discord.Client):
+class Snake_Bot(discord.Bot):
     async def on_ready(self):
         print('Logged in as {0}'.format(self.user))
     

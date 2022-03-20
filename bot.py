@@ -269,13 +269,8 @@ game = {
     "spawn_food": True,
     "food": []
 }
-
-
-class Snake_Bot(discord.bot):
-    async def on_ready(self):
-        print('Logged in as {0}'.format(self.user))
-    
-    async def on_message(self, message):
+@bot.command()
+async def on_message(message):
         if message.author.id == self.user.id:
             return
 

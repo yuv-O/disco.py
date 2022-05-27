@@ -280,4 +280,4 @@ async def on_command_error(ctx, error):
 
     
 
-bot.run('OTE0NTMwMDQzNDYyNTcwMDg0.YaOYeQ.hTivCnVeJIDLMSOOFjjh4b39x7w')
+bot.run('your token')

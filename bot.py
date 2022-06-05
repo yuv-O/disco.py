@@ -57,9 +57,9 @@ async def reminder(ctx, time, *, reminder):
 		embed.add_field(name='Warning', value='You have specified a too long duration!\nMaximum duration is 90 days.')
 	else:
 		beforermd = discord.Embed(title='Reminder Set', description=f'You will be reminded in {counter}', color=0x2F3136)
-		beforermd.set_footer(text='Discord.py For Beginners'.)
+		beforermd.set_footer(text='Discord.py For Beginners')
 		afterrmd = discord.Embed(title='Reminder', description=f'**Your reminder:** \n {reminder} \n\n *reminder set {counter} ago*', color=0x2F3136)
-		afterrmd.set_footer(text='Discord.py For Beginners'.)
+		afterrmd.set_footer(text='Discord.py For Beginners')
 		await ctx.send(embed=beforermd)
 		await asyncio.sleep(seconds)
 		await ctx.send(embed=afterrmd)

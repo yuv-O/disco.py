@@ -22,8 +22,7 @@ bot = commands.Bot(command_prefix= get_prefix)
 
 @bot.event 
 async def on_ready():
-    print('bot is ready.')
-bot.remove_command('help')      
+    print('bot is ready.')      
 @bot.command(name="reminder", description="reminds you something after said amount of time.", case_insensitive = True, aliases = ["remind", "remindme", "remind_me"])
 @commands.bot_has_permissions(attach_files = True, embed_links = True)
 async def reminder(ctx, time, *, reminder):
@@ -135,14 +134,7 @@ async def changeprefix(ctx,prefix):
 
      with open('prefixes.json', "w")as f:
        json.dump(prefixes, f, indent=4) 
-@bot.command(name="help", description="Shows all commands")
-async def help(ctx, command=None):
-	if command is None:
-		embed = discord.Embed(timestamp=ctx.message.created_at, title='probts Official Bot', description='You can do `prefix help <command>` to get more info about the command.', color=0x2F3136)
-		embed.add_field(name=' mod commands', value='```ban, kick, modrep, modclose, tempban,clear,changeprifix, report```')
-		embed.add_field(name=' User Commands', value='```ping, 8ball,```')
-		embed.set_footer(text='probt discord', icon_url=logo)
-		await ctx.send(embed=embed)   
+
 Status=cycle(['prifix > ,''playing help'])
 @bot.event
 async def on_ready():
